@@ -3,24 +3,23 @@
 """clients and their appointment reminders."""
 
 
-def prepare_email(client_name, appointment):
+def prepare_email(appointments):
     """reminder draft.
     Args:
-        appointments (tuple): [('list of client's name', 'their appointments')]
+        appointments (list): tuples of client names and appointments
 
     Returns:
-        list: 
+        str: reminder information
 
     Example:
         >>>prepare_email ('jen', '2015')
-            Dear jen, 
+            Dear jen,
             I look forward to meeting with you on 2015.
-            BEST, 
-            Me  
+            BEST,
+            Me
     """
-    appointments = [('client_name', 'appointment')]
-    for items in appointments:
-        print 'Dear {}, \nI look forward to meeting with you on {}.\nBEST, \nMe' \
-    .format(client_name, appointment)
-        return
-    
+    retval = []
+    template = 'Dear {}, \nI look forward to meeting with you on {}.\nBEST,\nMe'
+    for appointment in appointments:
+        retval.append(template.format(appointment[0], appointment[1]))
+    return retval
