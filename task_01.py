@@ -13,14 +13,17 @@ def get_party_stats(families, table_size=6):
         tuple: ('total', 'table')
 
     Example:
-        >>> get_party_stats(['Jan'], ['Jen','Jess'], ['Jem', 'Jack','Janis'])
-            (6, 3)
+        >>>get_party_stats((['Jan'], ['Jen','Jess'],
+        ['Jem', 'Jack','Janis']), 3)
+        >>>(6, 3)
+        >>>get_party_stats((['Jan'], ['Jen', 'Jess'],
+        ['Jem', 'Jack', 'Janis']), 2)
+        >>>(6, 4)
+
     """
 
     total = 0
     tables = 0
-    table_size = 6
-    print 'families is ', families
     for fam_grp in families:
         total += len(fam_grp)
         tables += len(fam_grp) / table_size
